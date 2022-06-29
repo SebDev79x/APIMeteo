@@ -8,13 +8,14 @@ const Homescreen = () => {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [city, setCity] = useState('')
-  const icon = atmosphere.includes(data.weather[0].main) ? iconsSet["Clouds"] : iconsSet[data.weather[0].main]
+  const icon = atmosphere.includes(data?.weather[0].main) ? iconsSet["Clouds"] : iconsSet[data?.weather[0].main]
+  console.log("icon",icon);
   useEffect(() => {
     const asyncBootstrap = async () => {
       try {
         const coords = await getGPSCoords()
         const data = await fetchOpenWeather(coords)
-        console.log("data", data);
+        console.log("data");
         setData(data)
       } catch (err) {
         console.log("erreur", err);
@@ -35,7 +36,6 @@ const Homescreen = () => {
       console.log("erreur", err);
     }
   }
-
   return (
     loading
       ? <ActivityIndicator />
@@ -50,6 +50,7 @@ const Homescreen = () => {
                 setCity(text)
               }}
             />
+
             <TouchableOpacity style={styles.button}
             onPress={handleSearch}
             >
@@ -58,9 +59,9 @@ const Homescreen = () => {
 
           </View>
           <Text style={styles.title}>{data.name}</Text>
-          <Text style={styles.icon}><Icon name={icon} size={40} /></Text>
+          <Text style={styles.icon}><Icon name={icon} size={50} /></Text>
           <Text style={[styles.title, styles.temp]}>{Math.round(data.main.temp)}°C</Text>
-          <Text style={styles.title}>{data.weather[0].description}</Text>
+          <Text style={styles.title}>{data?.weather[0].description}</Text>
           <View style={styles.details}>
             <View style={styles.item}>
               <Icon name="wi-strong-wind" size={40} />

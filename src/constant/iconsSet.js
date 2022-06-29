@@ -1,5 +1,5 @@
 export const iconsSet = {
-    Clouds: "day-cloudy-high",
+    Clouds: "wi-day-cloudy-high",
     Clear: "wi-day-sunny",
     Dust: "wi-dust",
     Snow: "wi-snow"

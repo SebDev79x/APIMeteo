@@ -1,5 +1,5 @@
 import { API_KEY } from '../constant/config'
-export const getGPSCoords = async (city = "Homblières") => {
+export const getGPSCoords = async (city = "Noyon") => {
     const req = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},FR&appid=${API_KEY}`)
     const json = await req.json()
 /*      console.log("json",json);
